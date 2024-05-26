@@ -18,6 +18,22 @@ body {
     background-position: center bottom;
 }
 
+body.classic {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/6.jpg');
+}
+
+body.tangled {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/7.jpg');
+}
+
+body.frozen {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/5.jpg');
+}
+
+body.the-little-mermaid {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/4.jpg');
+}
+
 body.classic header {
     background-color: #222222;
     color: #ffffff;
@@ -55,10 +71,23 @@ body.the-little-mermaid header nav a {
 body.the-little-mermaid header .logo {
     filter: invert(1);
 }
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header .media-controls {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+header .media-controls input#volumeControl {
+    width: 80px;
+    margin-left: 5px;
+}
 
 header {
-    width: 100%;
-    background-color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,6 +96,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100%;
+    background-color: #fff;
     z-index: 1000;
 }
 
@@ -76,29 +107,47 @@ header .logo {
     max-height: 50px;
 }
 
-header nav a {
-    margin: 0 15px;
+header nav input#headerSearchInput,
+header nav button#headerSearchButton {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    font-size: 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
     color: #333;
+    background-color: #fff;
 }
 
-header nav input#headerSearchInput {
-    padding: 5px;
-    margin-left: 15px;
-    font-size: 16px;
+header nav button#headerSearchButton {
+    border-radius: 5px;
+    margin-left: -5px;
 }
 
 header .media-controls {
     display: flex;
     align-items: center;
+    margin-right: 50px;
 }
 
+header nav a,
 header .media-controls button, 
 header .media-controls select, 
-header .media-controls input {
-    margin-left: 10px;
-    padding: 5px;
+header .media-controls input,
+header nav select#themeSelect {
+    margin-left: 5px;
     font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    align-items: center;
 }
 
 header nav label {
@@ -119,6 +168,37 @@ header nav select#themeSelect {
     padding: 20px;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+body.classic .container {
+    background-color: rgba(34, 34, 34, 0.5);
+}
+
+body.tangled .container {
+    background-color: rgba(189, 160, 56, 0.5);
+}
+
+body.frozen .container {
+    background-color: rgba(127, 207, 215, 0.5);
+}
+
+body.the-little-mermaid .container {
+    background-color: rgba(163, 45, 54, 0.5);
+}
+
+.search-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.results-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .search-bar {
@@ -201,11 +281,11 @@ body.frozen .logo {
 /* The Little Mermaid Theme */
 body.the-little-mermaid {
     background-color: #f7eeda;
-    color: #d52036;
+    color: #5fa69c;
 }
 
 body.the-little-mermaid h1, body.the-little-mermaid h2 {
-    color: #d52036;
+    color: #5fa69c;
 }
 
 body.the-little-mermaid .logo {
@@ -270,4 +350,61 @@ body {
 
 .character-card p {
     margin: 5px 0;
+}
+
+.welcome-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 1000px;
+    margin: 20vh auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Themed Welcome Container Backgrounds */
+body.classic .welcome-container {
+    background-color: rgba(34, 34, 34, 0.5);
+}
+
+body.tangled .welcome-container {
+    background-color: rgba(189, 160, 56, 0.5);
+}
+
+body.frozen .welcome-container {
+    background-color: rgba(127, 207, 215, 0.5);
+}
+
+body.the-little-mermaid .welcome-container {
+    background-color: rgba(163, 45, 54, 0.5); 
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.main-logo {
+    max-width: 150px;
+}
+
+#mainSearchInput {
+    width: 50%;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#mainSearchButton {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    width: auto;
 }

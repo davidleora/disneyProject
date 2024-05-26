@@ -18,8 +18,8 @@
             <select id="themeSelect">
                 <option value="classic">Classic Disney</option>
                 <option value="tangled">Tangled</option>
-                <option value="frozen">Frozen</option>
                 <option value="the-little-mermaid"> The Little Mermaid</option>
+                <option value="frozen">Frozen</option>
             </select>
         </nav>
         <div class="media-controls">
@@ -36,36 +36,14 @@
         </div>
     </header>
     <main>
-        <div class="welcome-content">
-            <img src="https://disneycharacter.s3.amazonaws.com/logo/disney-nobg.png" alt="Disney Logo" class="main-logo">
-            <input type="text" id="mainSearchInput" placeholder="Search for characters...">
-            <button id="mainSearchButton">Search</button>
+        <div class="welcome-container">
+            <div class="welcome-content">
+                <img src="https://disneycharacter.s3.amazonaws.com/logo/disney-nobg.png" alt="Disney Logo" class="main-logo">
+                <input type="text" id="mainSearchInput" placeholder="Search for characters...">
+                <button id="mainSearchButton">Search</button>
+            </div>
         </div>
     </main>
-    <style>
-        body {
-            background-image: url('https://disneycharacter.s3.amazonaws.com/img/1.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .welcome-content {
-            text-align: center;
-            margin-top: 30vh;
-        }
-        .main-logo {
-            max-width: 300px;
-            margin-bottom: 20px;
-        }
-        #mainSearchInput {
-            width: 60%;
-            padding: 10px;
-            font-size: 1.2em;
-        }
-        #mainSearchButton {
-            padding: 10px 20px;
-            font-size: 1.2em;
-        }
-    </style>
     <audio id="backgroundMusic" loop></audio>
     <script src="scripts.js"></script>
 </body>

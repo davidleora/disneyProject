@@ -18,8 +18,8 @@
             <select id="themeSelect">
                 <option value="classic">Classic Disney</option>
                 <option value="tangled">Tangled</option>
-                <option value="frozen">Frozen</option>
                 <option value="the-little-mermaid"> The Little Mermaid</option>
+                <option value="frozen">Frozen</option>
             </select>
         </nav>
         <div class="media-controls">
@@ -37,11 +37,15 @@
     </header>
     <div class="container">
         <h1>Search for Disney Characters</h1>
-        <div class="search-bar">
-            <input type="text" id="mainSearchInput" placeholder="Search for characters... ">
-            <button id="mainSearchButton">Search</button>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="mainSearchInput" placeholder="Search for characters... ">
+                <button id="mainSearchButton">Search</button>
+            </div>
         </div>
-        <div id="results"></div>
+        <div class="results-container">
+            <div id="results"></div>
+        </div>
     </div>
     <audio id="backgroundMusic" loop></audio>
     <script src="scripts.js"></script>

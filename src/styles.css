@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.character {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+.character img {
+    max-width: 150px;
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+.character h2 {
+    margin-top: 0;
+}
+.character p {
+    margin: 5px 0;
+}
+
+/* Default Theme (Classic Disney)*/
+body.classic {
+    background-color: white;
+    color: black;
+}
+body.classic h1, body.classic h2 {
+    color: #000;
+}
+
+/* Tangled Theme */
+body.tangled {
+    background-color: #ffd199;
+    color: #bb31d8;
+}
+body.tangled h1, body.tangled h2 {
+    color: #bb31d8;
+}
+
+/* Frozen Theme */
+body.frozen {
+    background-color: #e9fffe;
+    color: #00796b;
+}
+body.frozen h1, body.frozen h2 {
+    color: #00796b;
+}
+
+/* The Little Mermaid Theme */
+body.the-little-mermaid {
+    background-color: #f7eeda;
+    color: #d52036;
+}
+body.the-little-mermaid h1, body.little-mermaid h2 {
+    color: #d52036;
+}
+
+.music-player {
+    margin-bottom: 20px;
+}

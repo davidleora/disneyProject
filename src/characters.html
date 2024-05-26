@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Disney</title>
+    <title>Disney Character Search</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="classic">
@@ -35,37 +35,14 @@
             <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.2">
         </div>
     </header>
-    <main>
-        <div class="welcome-content">
-            <img src="https://disneycharacter.s3.amazonaws.com/logo/disney-nobg.png" alt="Disney Logo" class="main-logo">
-            <input type="text" id="mainSearchInput" placeholder="Search for characters...">
+    <div class="container">
+        <h1>Search for Disney Characters</h1>
+        <div class="search-bar">
+            <input type="text" id="mainSearchInput" placeholder="Search for characters... ">
             <button id="mainSearchButton">Search</button>
         </div>
-    </main>
-    <style>
-        body {
-            background-image: url('https://disneycharacter.s3.amazonaws.com/img/1.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .welcome-content {
-            text-align: center;
-            margin-top: 30vh;
-        }
-        .main-logo {
-            max-width: 300px;
-            margin-bottom: 20px;
-        }
-        #mainSearchInput {
-            width: 60%;
-            padding: 10px;
-            font-size: 1.2em;
-        }
-        #mainSearchButton {
-            padding: 10px 20px;
-            font-size: 1.2em;
-        }
-    </style>
+        <div id="results"></div>
+    </div>
     <audio id="backgroundMusic" loop></audio>
     <script src="scripts.js"></script>
 </body>

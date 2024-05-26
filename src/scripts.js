@@ -1,13 +1,68 @@
+function handleSearch(query) {
+    window.location.href = `characters.html?search=${query}`;
+}
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+window.addEventListener('load', () => {
+    const searchQuery = getUrlParameter('search');
+    if (searchQuery) {
+        performSearch(searchQuery);
+    }
+});
+
 document.getElementById('themeSelect').addEventListener('change', function() {
     document.body.className = this.value;
 });
 
-document.getElementById('searchButton').addEventListener('click', async () => {
-    const name = document.getElementById('searchInput').value;
-    const response = await fetch(`https://qvvu82pwnl.execute-api.us-east-1.amazonaws.com/dev/character?name=${name}`);
-    const data = await response.json();
-    displayCharacter(data);
+document.getElementById('headerSearchButton').addEventListener('click', () => {
+    const query = document.getElementById('headerSearchInput').value;
+    handleSearch(query);
 });
+
+document.getElementById('headerSearchInput').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const query = event.target.value;
+        handleSearch(query);
+    }
+});
+
+document.getElementById('mainSearchButton').addEventListener('click', () => {
+    const query = document.getElementById('mainSearchInput').value;
+    handleSearch(query);
+});
+
+document.getElementById('mainSearchInput').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const query = event.target.value;
+        handleSearch(query);
+    }
+});
+
+if (document.getElementById('searchButton')) {
+    document.getElementById('searchButton').addEventListener('click', () => {
+        const name = document.getElementById('searchInput').value;
+        performSearch(name);
+    });
+
+    document.getElementById('searchInput').addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            const name = document.getElementById('searchInput').value;
+            performSearch(name);
+        }
+    });
+}
+
+function performSearch(name) {
+    fetch(`https://qvvu82pwnl.execute-api.us-east-1.amazonaws.com/dev/character?name=${name}`)
+        .then(response => response.json())
+        .then(data => displayCharacter(data));
+}
 
 function countNonEmptyProperties(character) {
     let count = 0;
@@ -26,38 +81,34 @@ function displayCharacter(data) {
     resultsDiv.innerHTML = '';
 
     if (data.data && data.data.length > 0) {
-        // Sort characters based on the number of non-empty properties
         data.data.sort((a, b) => countNonEmptyProperties(b) - countNonEmptyProperties(a));
 
         data.data.forEach(character => {
             const characterDiv = document.createElement('div');
-            characterDiv.className = 'character';
+            characterDiv.className = 'character-card';
+
+            const detailsDiv = document.createElement('div');
+            detailsDiv.className = 'details';
 
             const name = document.createElement('h2');
             name.textContent = character.name;
-            characterDiv.appendChild(name);
-
-            if (character.imageUrl) {
-                const image = document.createElement('img');
-                image.src = character.imageUrl;
-                characterDiv.appendChild(image);
-            }
+            detailsDiv.appendChild(name);
 
             const films = document.createElement('p');
             films.textContent = `Films: ${character.films.join(', ')}`;
-            characterDiv.appendChild(films);
+            detailsDiv.appendChild(films);
 
             const tvShows = document.createElement('p');
             tvShows.textContent = `TV Shows: ${character.tvShows.join(', ')}`;
-            characterDiv.appendChild(tvShows);
+            detailsDiv.appendChild(tvShows);
 
             const videoGames = document.createElement('p');
             videoGames.textContent = `Video Games: ${character.videoGames.join(', ')}`;
-            characterDiv.appendChild(videoGames);
+            detailsDiv.appendChild(videoGames);
 
             const parkAttractions = document.createElement('p');
             parkAttractions.textContent = `Park Attractions: ${character.parkAttractions.join(', ')}`;
-            characterDiv.appendChild(parkAttractions);
+            detailsDiv.appendChild(parkAttractions);
 
             const sourceUrl = document.createElement('p');
             const link = document.createElement('a');
@@ -65,7 +116,15 @@ function displayCharacter(data) {
             link.textContent = 'More Information';
             link.target = '_blank';
             sourceUrl.appendChild(link);
-            characterDiv.appendChild(sourceUrl);
+            detailsDiv.appendChild(sourceUrl);
+
+            characterDiv.appendChild(detailsDiv);
+
+            if (character.imageUrl) {
+                const image = document.createElement('img');
+                image.src = character.imageUrl;
+                characterDiv.appendChild(image);
+            }
 
             resultsDiv.appendChild(characterDiv);
         });
@@ -77,10 +136,17 @@ function displayCharacter(data) {
 const audioElement = document.getElementById('backgroundMusic');
 const musicSelect = document.getElementById('musicSelect');
 const volumeControl = document.getElementById('volumeControl');
-const playButton = document.getElementById('playButton');
 
-// Function to play selected music
-function playMusic(selectedMusic) {
+function setDefaultMusic() {
+    musicSelect.value = 'tangled-one';
+    const event = new Event('change');
+    musicSelect.dispatchEvent(event);
+}
+
+window.addEventListener('load', setDefaultMusic);
+
+musicSelect.addEventListener('change', function() {
+    const selectedMusic = musicSelect.value;
     switch (selectedMusic) {
         case 'frozen':
             audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Frozen_LetItGo.mp3';
@@ -97,20 +163,21 @@ function playMusic(selectedMusic) {
         default:
             audioElement.src = '';
     }
-    if (selectedMusic) {
-        audioElement.play();
-    } else {
-        audioElement.pause();
-    }
-}
-
-// Autoplay Frozen background music on window load
-window.addEventListener('load', () => {
-    playMusic('frozen');
 });
 
-musicSelect.addEventListener('change', function() {
-    playMusic(musicSelect.value);
+document.getElementById('playButton').addEventListener('click', function() {
+    if (audioElement.src) {
+        audioElement.play();
+    }
+});
+
+document.getElementById('pauseButton').addEventListener('click', function() {
+    audioElement.pause();
+});
+
+document.getElementById('stopButton').addEventListener('click', function() {
+    audioElement.pause();
+    audioElement.currentTime = 0;
 });
 
 volumeControl.addEventListener('input', function() {

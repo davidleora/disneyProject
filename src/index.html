@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disney Character Search</title>
+    <style>
+        body {
+            background-image: url('../img/3.jpg');
+            background-size: cover;
+            font-family: 'Disney Font', sans-serif;
+        }
+        h1, h2 {
+            font-family: 'Disney Font', sans-serif;
+        }
+        #searchButton {
+            position: relative;
+        }
+        .spinner {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+            .character img {
+                max-width: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Search for Disney Characters</h1>
@@ -13,14 +41,12 @@
 
     <script>
         document.getElementById('searchButton').addEventListener('click', async () => {
+            document.querySelector('.spinner').style.display = 'inline-block';
             const name = document.getElementById('searchInput').value;
             const response = await fetch(`https://qvvu82pwnl.execute-api.us-east-1.amazonaws.com/dev/character?name=${name}`);
             const data = await response.json();
             displayCharacter(data);
-
-            function displayCharacter(data){
-                
-            }
+            document.querySelector('.spinner').style.display = 'none';
         });
     </script>
 </body>

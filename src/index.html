@@ -40,17 +40,79 @@
         .character p {
             margin: 5px 0;
         }
+
+        /* Default Theme (Classic Disney)*/
+        body.classic {
+            background-color: white;
+            color: black;
+        }
+        body.classic h1, body.classic h2 {
+            color: #000;
+        }
+
+        /* Tangled Theme */
+        body.tangled {
+            background-color: #d8e2dc;
+            color: #6a0572;
+        }
+        body.tangled h1, body.tangled h2 {
+            color: #6a0572;
+        }
+
+        /* Frozen Theme */
+        body.frozen {
+            background-color: #e0f7fa;
+            color: #00796b;
+        }
+        body.frozen h1, body.frozen h2 {
+            color: #00796b;
+        }
+        .music-player {
+            margin-bottom: 20px;
+        }
+
+        /* Moana Theme */
+        body.moana {
+            background-color: #f9f7f7;
+            color: #0d47a1;
+        }
     </style>
 </head>
-<body>
+<body class="classic">
     <div class="container">
+        <div class="theme-switcher">
+            <label for="themeSelect">Choose Theme: </label>
+            <select id="themeSelect">
+                <option value="classic">Classic Disney</option>
+                <option value="tangled">Tangled</option>
+                <option value="frozen">Frozen</option>
+                <option value="moana">Moana</option>
+            </select>
+        </div>
         <h1>Search for Disney Characters</h1>
         <input type="text" id="searchInput" placeholder="Enter character name">
         <button id="searchButton">Search</button>
         <div id="results"></div>
     </div>
+    <div class="music-player">
+        <label for="musicSelect">Choose Background Music:</label>
+        <select id="musicSelect">
+            <option value="aladdin">Aladdin</option>
+            <option value="tangled-one">Tangled 1 Theme</option>
+            <option value="tangled-two">Tangled 2 Theme</option>
+            <option value="the-little-mermaid">The Little Mermaid</option>
+        </select>
+        <br>
+        <label for="volumeControl">Volume:</label>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.25">
+    </div>
+    <audio id="backgroundMusic" loop></audio>
 
     <script>
+        document.getElementById('themeSelect').addEventListener('change', function() {
+            document.body.className = this.value;
+        });
+
         document.getElementById('searchButton').addEventListener('click', async () => {
             const name = document.getElementById('searchInput').value;
             const response = await fetch(`https://qvvu82pwnl.execute-api.us-east-1.amazonaws.com/dev/character?name=${name}`);
@@ -122,6 +184,39 @@
                 resultsDiv.textContent = 'No characters found';
             }
         }
+
+        const audioElement = document.getElementById('backgroundMusic');
+        const musicSelect = document.getElementById('musicSelect');
+        const volumeControl = document.getElementById('volumeControl');
+
+        musicSelect.addEventListener('change', function() {
+            const selectedMusic = musicSelect.value;
+            switch (selectedMusic) {
+                case 'aladdin':
+                    audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Aladdin_AWholeNewWorld.mp3';
+                    break;
+                case 'tangled-one':
+                    audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Tangled_ISeeTheLight.mp3';
+                    break;
+                case 'tangled-two':
+                    audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Tangled_WhenWillMyLifeBegin.mp3';
+                    break;
+                case 'the-little-mermaid':
+                    audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/TheLittleMermaid_PartOfYourWorld.mp3';
+                    break;
+                default:
+                    audioElement.src = '';
+            }
+            if (selectedMusic) {
+                audioElement.play();
+            } else {
+                audioElement.pause();
+            }
+        });
+
+        volumeControl.addEventListener('input', function() {
+            audioElement.volume = volumeControl.value;
+        });
     </script>
 </body>
 </html>

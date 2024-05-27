@@ -1,0 +1,513 @@
+body, h1, h2, h3, h4, h5, h6, nav a, .main-search-form input, .main-search-form button {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+}
+
+.main-search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-search-form input, .main-search-form button {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+body.classic {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/6.jpg');
+}
+
+body.tangled {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/7.jpg');
+}
+
+body.frozen {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/5.jpg');
+}
+
+body.the-little-mermaid {
+    background-image: url('https://disneycharacter.s3.amazonaws.com/img/4.jpg');
+}
+
+body.classic header {
+    background-color: #222222;
+    color: #ffffff;
+}
+
+body.classic header .logo {
+    filter: invert(1);
+}
+
+body.classic header nav a {
+    color: #ffffff;
+}
+
+body.tangled header {
+    background-color: #bda038;
+    color: #6a0572;
+}
+
+body.tangled header nav a {
+    color: #6a0572;
+}
+
+body.frozen header {
+    background-color: #7fcfd7;
+    color: #004d40;
+}
+
+body.frozen header nav a {
+    color: #004d40;
+}
+
+body.the-little-mermaid header {
+    background-color: #a32d36;
+    color: #ffffff;
+}
+
+body.the-little-mermaid header nav a {
+    color: #ffffff;
+}
+
+body.the-little-mermaid header .logo {
+    filter: invert(1);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header .media-controls {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+header .media-controls input#volumeControl {
+    width: 80px;
+    margin-left: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+header .logo {
+    height: 50px;
+    width: auto;
+    max-height: 50px;
+}
+
+header nav input#headerSearchInput,
+header nav button#headerSearchButton {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    font-size: 16px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+}
+
+header nav button#headerSearchButton {
+    border-radius: 5px;
+    margin-left: -5px;
+}
+
+header .media-controls {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+}
+
+header nav a,
+header .media-controls button, 
+header .media-controls select, 
+header .media-controls input,
+header nav select#themeSelect {
+    margin-left: 5px;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    align-items: center;
+}
+
+header nav label {
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+header nav select#themeSelect {
+    padding: 5px;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+body.classic .container {
+    background-color: rgba(34, 34, 34, 0.5);
+}
+
+body.tangled .container {
+    background-color: rgba(189, 160, 56, 0.5);
+}
+
+body.frozen .container {
+    background-color: rgba(127, 207, 215, 0.5);
+}
+
+body.the-little-mermaid .container {
+    background-color: rgba(163, 45, 54, 0.5);
+}
+
+.search-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.results-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 200px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.character {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.character h2 {
+    margin-top: 0;
+}
+
+.character p {
+    margin: 5px 0;
+}
+
+/* Default Theme (Classic Disney) */
+body.classic {
+    background-color: white;
+    color: black;
+}
+
+body.classic h1, body.classic h2 {
+    color: black;
+}
+
+body.classic .logo {
+    filter: none;
+}
+
+header .logo {
+    filter: invert(0);
+}
+
+/* Tangled Theme */
+body.tangled {
+    background-color: #ffd199;
+    color: #bb31d8;
+}
+
+body.tangled h1, body.tangled h2 {
+    color: #bb31d8;
+}
+
+body.tangled .logo {
+    filter: invert(0);
+    box-shadow: 0 0 10px 5px rgba(255, 223, 17, 0.8);
+}
+
+/* Frozen Theme */
+body.frozen {
+    background-color: #e9fffe;
+    color: #00796b;
+}
+
+body.frozen h1, body.frozen h2 {
+    color: #00796b;
+}
+
+body.frozen .logo {
+    filter: invert(0);
+    box-shadow: 0 0 10px 5px rgba(0, 150, 136, 0.8);
+}
+
+/* The Little Mermaid Theme */
+body.the-little-mermaid {
+    background-color: #f7eeda;
+    color: #5fa69c;
+}
+
+body.the-little-mermaid h1, body.the-little-mermaid h2 {
+    color: #5fa69c;
+}
+
+body.the-little-mermaid .logo {
+    filter: invert(0);
+    box-shadow: 0 0 10px 5px rgba(213, 32, 54, 0.8);
+}
+
+.music-player {
+    margin-bottom: 20px;
+}
+
+main {
+    margin-top: 70px;
+}
+
+body {
+    background-position: center bottom;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.character-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.character-details {
+    flex: 1;
+}
+
+.character img {
+    margin-left: 20px;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+}
+
+.character-card img {
+    max-width: 150px;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+.character-card h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.character-card p {
+    margin: 5px 0;
+}
+
+.welcome-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 1000px;
+    margin: 20vh auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Themed Welcome Container Backgrounds */
+body.classic .welcome-container {
+    background-color: rgba(34, 34, 34, 0.5);
+}
+
+body.tangled .welcome-container {
+    background-color: rgba(189, 160, 56, 0.5);
+}
+
+body.frozen .welcome-container {
+    background-color: rgba(127, 207, 215, 0.5);
+}
+
+body.the-little-mermaid .welcome-container {
+    background-color: rgba(163, 45, 54, 0.5); 
+}
+
+.welcome-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.main-logo {
+    max-width: 150px;
+}
+#mainSearchInput {
+    width: 50%;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-right: -10px;
+    border-radius: 5px 0 0 5px;
+}
+
+#mainSearchButton {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    width: auto;
+    border-radius: 0 5px 5px 0;
+}
+
+#secondarySearchInput {
+    width: 800px;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-right: -10px;
+    border-radius: 5px 0 0 5px;
+}
+
+#secondarySearchButton {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    width: auto;
+    border-radius: 0 5px 5px 0;
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1001; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Themed Popup Backgrounds */
+body.classic .popup-content {
+    background-color: rgba(34, 34, 34, 0.9);
+    color: #ffffff;
+}
+
+body.tangled .popup-content {
+    background-color: rgba(189, 160, 56, 0.9);
+    color: #6a0572;
+}
+
+body.frozen .popup-content {
+    background-color: rgba(127, 207, 215, 0.9);
+    color: #004d40;
+}
+
+body.the-little-mermaid .popup-content {
+    background-color: rgba(163, 45, 54, 0.9);
+    color: #ffffff;
+}
+
+.popup-content h2 {
+    margin-top: 0;
+}
+
+.popup-content p {
+    margin: 10px 0;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

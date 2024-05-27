@@ -251,16 +251,16 @@ document.getElementById('mainSearchInput').addEventListener('keypress', (event) 
     }
 });
 
-document.getElementsById('searchForm').addEventListener('submit', function(event) {
+document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const name = document.getElementById('headerSearchInput').value;
-    performSearch(name);
+    const query = document.getElementById('headerSearchInput').value;
+    handleSearch(query);
 });
 
 document.getElementById('mainSearchForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const name = document.getElementById('mainSearchInput').value;
-    performSearch(name);
+    const query = document.getElementById('mainSearchInput').value;
+    handleSearch(query);
 });
 
 if (document.getElementById('searchButton')) {

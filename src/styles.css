@@ -203,8 +203,11 @@ body.the-little-mermaid .container {
 .search-bar {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     gap: 10px;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
 .search-bar input {
@@ -373,7 +376,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 90%;
     max-width: 1000px;
     margin: 20vh auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -418,6 +421,13 @@ body.the-little-mermaid .welcome-container {
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 10px;
+    width: 300px;
+}
+
+#mainSearchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #mainSearchButton {

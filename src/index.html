@@ -12,8 +12,10 @@
         <nav>
             <a href="index.html">Home</a>
             <a href="characters.html">Characters</a>
-            <input type="text" id="headerSearchInput" placeholder="Search for characters...">
-            <button id="headerSearchButton">Search</button>
+            <form id="searchForm">
+                <input type="text" id="headerSearchInput" placeholder="Search for characters...">
+                <button id="headerSearchButton">Search</button>
+            </form>
             <label for="themeSelect">Choose Theme: </label>
             <select id="themeSelect">
                 <option value="classic">Classic Disney</option>
@@ -37,10 +39,14 @@
     </header>
     <main>
         <div class="welcome-container">
-            <div class="welcome-content">
+            <div class="logo-container">
                 <img src="https://disneycharacter.s3.amazonaws.com/logo/disney-nobg.png" alt="Disney Logo" class="main-logo">
-                <input type="text" id="mainSearchInput" placeholder="Search for characters...">
-                <button id="mainSearchButton">Search</button>
+            </div>
+            <div class="search-bar">
+                <form id="mainSearchForm">
+                    <input type="text" id="mainSearchInput" placeholder="Search for characters...">
+                    <button type="submit" id="mainSearchButton">Search</button>
+                </form>
             </div>
         </div>
     </main>

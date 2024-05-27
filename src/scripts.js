@@ -1,6 +1,13 @@
+const audioElement = document.getElementById('backgroundMusic');
+const musicSelect = document.getElementById('musicSelect');
+const volumeControl = document.getElementById('volumeControl');
+
+window.addEventListener('beforeunload', saveAudioState);
+window.addEventListener('load', setDefaults);
+window.addEventListener('load', setDefaultMusic);
+
 function handleSearch(query) {
-    saveAudioState();
-    window.location.href = `characters.html?search=${query}`;
+    performSearch(query);
 }
 
 function handleThemeChange(theme) {
@@ -88,75 +95,11 @@ function setDefaults() {
     restoreAudioState();
 }
 
-window.addEventListener('beforeunload', saveAudioState);
-window.addEventListener('load', setDefaults);
-
-function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    const results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
-
-window.addEventListener('load', () => {
-    const searchQuery = getUrlParameter('search');
-    if (searchQuery) {
-        performSearch(searchQuery);
-    }
-});
-
-document.getElementById('themeSelect').addEventListener('change', function() {
-    const theme = this.value;
-    handleThemeChange(theme);
-    setThemeBackground(theme);
-});
-
-document.getElementById('musicSelect').addEventListener('change', function() {
-    handleMusicChange(this.value);
-});
-
-document.getElementById('headerSearchButton').addEventListener('click', () => {
-    const query = document.getElementById('headerSearchInput').value;
-    handleSearch(query);
-});
-
-document.getElementById('headerSearchInput').addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        const query = event.target.value;
-        handleSearch(query);
-    }
-});
-
-document.getElementById('mainSearchButton').addEventListener('click', () => {
-    const query = document.getElementById('mainSearchInput').value;
-    handleSearch(query);
-});
-
-document.getElementById('mainSearchInput').addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        const query = event.target.value;
-        handleSearch(query);
-    }
-});
-
-if (document.getElementById('searchButton')) {
-    document.getElementById('searchButton').addEventListener('click', () => {
-        const name = document.getElementById('searchInput').value;
-        performSearch(name);
-    });
-
-    document.getElementById('searchInput').addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            const name = document.getElementById('searchInput').value;
-            performSearch(name);
-        }
-    });
-}
-
 function performSearch(name) {
     fetch(`https://qvvu82pwnl.execute-api.us-east-1.amazonaws.com/dev/character?name=${name}`)
         .then(response => response.json())
-        .then(data => displayCharacter(data));
+        .then(data => displayCharacter(data))
+        .catch(error => console.error('Error:', error));
 }
 
 function countNonEmptyProperties(character) {
@@ -228,56 +171,12 @@ function displayCharacter(data) {
     }
 }
 
-const audioElement = document.getElementById('backgroundMusic');
-const musicSelect = document.getElementById('musicSelect');
-const volumeControl = document.getElementById('volumeControl');
-
-function setDefaultMusic() {
-    musicSelect.value = 'tangled-one';
-    const event = new Event('change');
-    musicSelect.dispatchEvent(event);
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
-
-window.addEventListener('load', setDefaultMusic);
-
-musicSelect.addEventListener('change', function() {
-    const selectedMusic = musicSelect.value;
-    switch (selectedMusic) {
-        case 'frozen':
-            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Frozen_LetItGo.mp3';
-            break;
-        case 'tangled-one':
-            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Tangled_ISeeTheLight.mp3';
-            break;
-        case 'tangled-two':
-            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Tangled_WhenWillMyLifeBegin.mp3';
-            break;
-        case 'the-little-mermaid':
-            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/TheLittleMermaid_PartOfYourWorld.mp3';
-            break;
-        default:
-            audioElement.src = '';
-    }
-});
-
-document.getElementById('playButton').addEventListener('click', function() {
-    if (audioElement.src) {
-        audioElement.play();
-    }
-});
-
-document.getElementById('pauseButton').addEventListener('click', function() {
-    audioElement.pause();
-});
-
-document.getElementById('stopButton').addEventListener('click', function() {
-    audioElement.pause();
-    audioElement.currentTime = 0;
-});
-
-volumeControl.addEventListener('input', function() {
-    audioElement.volume = volumeControl.value;
-});
 
 function saveAudioState() {
     const audioElement = document.getElementById('backgroundMusic');
@@ -304,3 +203,115 @@ function restoreAudioState() {
         }
     }
 }
+
+function setDefaultMusic() {
+    musicSelect.value = 'tangled-one';
+    const event = new Event('change');
+    musicSelect.dispatchEvent(event);
+}
+
+window.addEventListener('load', () => {
+    const searchQuery = getUrlParameter('search');
+    if (searchQuery) {
+        performSearch(searchQuery);
+    }
+});
+
+document.getElementById('themeSelect').addEventListener('change', function() {
+    const theme = this.value;
+    handleThemeChange(theme);
+    setThemeBackground(theme);
+});
+
+document.getElementById('musicSelect').addEventListener('change', function() {
+    handleMusicChange(this.value);
+});
+
+document.getElementById('headerSearchButton').addEventListener('click', () => {
+    const query = document.getElementById('headerSearchInput').value;
+    handleSearch(query);
+});
+
+document.getElementById('headerSearchInput').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const query = event.target.value;
+        handleSearch(query);
+    }
+});
+
+document.getElementById('mainSearchButton').addEventListener('click', () => {
+    const query = document.getElementById('mainSearchInput').value;
+    handleSearch(query);
+});
+
+document.getElementById('mainSearchInput').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const query = event.target.value;
+        handleSearch(query);
+    }
+});
+
+document.getElementsById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('headerSearchInput').value;
+    performSearch(name);
+});
+
+document.getElementById('mainSearchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('mainSearchInput').value;
+    performSearch(name);
+});
+
+if (document.getElementById('searchButton')) {
+    document.getElementById('searchButton').addEventListener('click', () => {
+        const name = document.getElementById('searchInput').value;
+        performSearch(name);
+    });
+
+    document.getElementById('searchInput').addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            const name = document.getElementById('searchInput').value;
+            performSearch(name);
+        }
+    });
+}
+
+document.getElementById('playButton').addEventListener('click', function() {
+    if (audioElement.src) {
+        audioElement.play();
+    }
+});
+
+document.getElementById('pauseButton').addEventListener('click', function() {
+    audioElement.pause();
+});
+
+document.getElementById('stopButton').addEventListener('click', function() {
+    audioElement.pause();
+    audioElement.currentTime = 0;
+});
+
+volumeControl.addEventListener('input', function() {
+    audioElement.volume = volumeControl.value;
+});
+
+musicSelect.addEventListener('change', function() {
+    const selectedMusic = musicSelect.value;
+    switch (selectedMusic) {
+        case 'frozen':
+            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Frozen_LetItGo.mp3';
+            break;
+        case 'tangled-one':
+            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Tangled_ISeeTheLight.mp3';
+            break;
+        case 'tangled-two':
+            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/Tangled_WhenWillMyLifeBegin.mp3';
+            break;
+        case 'the-little-mermaid':
+            audioElement.src = 'https://disneycharacter.s3.amazonaws.com/bgms/TheLittleMermaid_PartOfYourWorld.mp3';
+            break;
+        default:
+            audioElement.src = '';
+    }
+});

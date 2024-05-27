@@ -1,9 +1,51 @@
+@font-face {
+    font-family: 'Waltograph';
+    src: url('https://disneycharacter.s3.amazonaws.com/font/waltograph42.ttf') format('truetype');
+}
+
 body, h1, h2, h3, h4, h5, h6, nav a, .main-search-form input, .main-search-form button {
-    font-family: Arial, sans-serif;
+    font-family: 'Waltograph', Arial, sans-serif;
+    font-size: 1.1em;
+}
+
+body.classic, body.classic h1, body.classic h2 {
+    font-family: 'Waltograph', Arial, sans-serif;
+}
+
+body.tangled, body.tangled h1, body.tangled h2 {
+    font-family: 'Waltograph', Arial, sans-serif;
+}
+
+body.frozen, body.frozen h1, body.frozen h2 {
+    font-family: 'Waltograph', Arial, sans-serif;
+}
+
+body.the-little-mermaid, body.the-little-mermaid h1, body.the-little-mermaid h2 {
+    font-family: 'Waltograph', Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4, h5, h6 {
+    font-size: 1.5em;
+}
+
+nav a {
+    font-size: 1.5em;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Waltograph', Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -25,6 +67,7 @@ body {
     width: 100%;
     max-width: 300px;
     margin-top: 10px;
+    font-size: 1.2em;
 }
 
 body.classic {
@@ -426,7 +469,7 @@ body.the-little-mermaid .welcome-container {
 }
 
 #secondarySearchInput {
-    width: 800px;
+    width: 500px;
     padding: 10px;
     font-size: 1.2em;
     margin-right: -10px;
@@ -464,6 +507,7 @@ body.the-little-mermaid .welcome-container {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
+    font-size: 1.2em;
 }
 
 /* Themed Popup Backgrounds */

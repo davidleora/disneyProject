@@ -38,17 +38,6 @@ The application is deployed to an Amazon S3 bucket and is publicly accessible. Y
 
 3. **Control Music**: Use the play, pause, and stop buttons to control the background music. Adjust the volume using the volume slider.
 
-## Screenshots
-
-### Home Page
-![Home Page](https://disneycharacter.s3.amazonaws.com/screenshots/home.png)
-
-### Search Results
-![Search Results](https://disneycharacter.s3.amazonaws.com/screenshots/results.png)
-
-### Theme Selection
-![Theme Selection](https://disneycharacter.s3.amazonaws.com/screenshots/theme-selection.png)
-
 ## Contributing
 
 Contributions are welcome! If you find a bug or have a suggestion for improvement, please create an issue or submit a pull request.

@@ -38,14 +38,6 @@ The application is deployed to an Amazon S3 bucket and is publicly accessible. Y
 
 3. **Control Music**: Use the play, pause, and stop buttons to control the background music. Adjust the volume using the volume slider.
 
-## Contributing
-
-Contributions are welcome! If you find a bug or have a suggestion for improvement, please create an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - [Disney API](https://disneyapi.dev/) for providing the character data.
@@ -56,7 +48,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ### Contact
 
-If you have any questions or feedback, feel free to contact me at [your-email@example.com](mailto:your-email@example.com).
+If you have any questions or feedback, feel free to contact me at [liuleora@gmail.com](mailto:liuleora@gmail.com).
 
 ---
 
